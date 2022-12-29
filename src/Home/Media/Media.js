@@ -19,7 +19,7 @@ const Media = () => {
   // };
 
   return (
-    <div className="">
+    <div className="grid sm:grid-cols-1">
       <h2 className="text-center text-2xl font-serif italic font-bold">
         Media: {allposts?.length}
       </h2>

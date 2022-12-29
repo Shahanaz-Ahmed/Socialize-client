@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
-import icon from "../../assets/multimedia.png";
+// import icon from "../../assets/multimedia.png";
+import icon1 from "../../assets/upload.png";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const PostSection = () => {
@@ -15,7 +16,7 @@ const PostSection = () => {
   //   console.log(imageHostKey);
 
   const { user } = useContext(AuthContext);
-  console.log("user --", user);
+  // console.log("user --", user);
   const navigate = useNavigate();
 
   const handleAddPost = (data) => {
@@ -61,7 +62,7 @@ const PostSection = () => {
   };
 
   return (
-    <div className="mt-6">
+    <div className="mt-6 grid grid-cols-1">
       <form onSubmit={handleSubmit(handleAddPost)} className="">
         <input
           className="textarea textarea-bordered w-full rounded-2xl p-3 mb-5"
@@ -74,11 +75,16 @@ const PostSection = () => {
         <div className="my-3 flex m">
           {" "}
           <label htmlFor="files" className="">
-            <img className="w-8 h-8 mr-2" src={icon} alt="" />
+            <img className="w-8 h-8 mr-2" src={icon1} alt="" />
           </label>
           <input
             placeholder="upload pic"
             id="files"
+            style={{
+              display: "flex",
+              color: "blue",
+              fontWeight: "bold",
+            }}
             // style={{ color: "bg-black" }}
             type="file"
             className=""
@@ -97,11 +103,6 @@ const PostSection = () => {
           />
         ) : (
           <Link to="/login">
-            {/* If you want to post? Please{" "}
-            <span className="text-blue-800 font-bold italic font-serif">
-              Login
-            </span>{" "}
-            First. */}
             <input
               className="mb-3 btn glass bg-black hover:bg-sky-400 hover:text-white"
               value="Submit"

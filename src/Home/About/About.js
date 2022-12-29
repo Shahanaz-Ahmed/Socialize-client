@@ -3,6 +3,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
+import Footer from "../../Shared/Footer/Footer";
 
 const About = () => {
   const {
@@ -207,6 +208,7 @@ const About = () => {
             </div>
           </div>
         </>
+        <Footer></Footer>
       </div>
     </div>
   );

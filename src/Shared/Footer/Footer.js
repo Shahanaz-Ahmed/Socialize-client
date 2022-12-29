@@ -2,10 +2,12 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div>
-      <footer className="footer footer-center p-4 bg-base-300 text-base-content">
+    <div className="bg-black ">
+      <footer className="footer footer-center p-4 text-base-content ">
         <div>
-          <p>Copyright © 2022 - All right reserved by Socialize</p>
+          <p className="text-white grid lg:grid-cols-1 md:grid-cols-1  sm:grid-cols-1">
+            Copyright © 2022 - All right reserved by Socialize
+          </p>
         </div>
       </footer>
     </div>
