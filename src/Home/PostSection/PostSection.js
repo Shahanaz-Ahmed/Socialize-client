@@ -15,7 +15,7 @@ const PostSection = () => {
   const imageHostKey = process.env.REACT_APP_imgbb_key;
   //   console.log(imageHostKey);
 
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   // console.log("user --", user);
   const navigate = useNavigate();
 
@@ -60,6 +60,10 @@ const PostSection = () => {
         }
       });
   };
+
+  if (loading) {
+    return <progress className="progress w-56"></progress>;
+  }
 
   return (
     <div className="mt-6 grid grid-cols-1">

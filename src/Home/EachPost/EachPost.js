@@ -1,10 +1,7 @@
-// import { useQuery } from "@tanstack/react-query";
-import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import love from "../../assets/heart.png";
-import like from "../../assets/thumb-up.png";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const EachPost = ({ allpost }) => {
