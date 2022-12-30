@@ -5,24 +5,27 @@ import love from "../../assets/heart.png";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const EachPost = ({ allpost }) => {
-  const { user } = useContext(AuthContext);
-  const { _id, userPhoto, name, text, image, totalCount } = allpost;
+  const { user, loading } = useContext(AuthContext);
+  const { _id, userPhoto, name, text, image, totalCount, comment } = allpost;
   //new
   const {
     register,
-    // handleSubmit,
+    handleSubmit,
     // formState: { errors },
   } = useForm();
 
   const [count, setCount] = useState(0);
+  // const [newComment, setNewComment] = useState("");
+
+  // const [commentcnt, setCommentCnt] = useState(0);
   const handleCount = (count) => {
     // setCount(count + 1);
     count = count;
     count = count + 1;
 
     setCount(count);
-    console.log(count);
-    console.log(_id);
+    // console.log(count);
+    // console.log(_id);
     //
     fetch(`http://localhost:5000/allposts/${_id}`, {
       method: "PUT",
@@ -33,10 +36,10 @@ const EachPost = ({ allpost }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.modifiedCount > 0) {
           count = count;
-          console.log(count);
+          // console.log(count);
         }
       });
   };
@@ -53,6 +56,31 @@ const EachPost = ({ allpost }) => {
 
   // const { totalCount } = allposts;
   // console.log(totalCount);
+
+  // const handleComment = (data) => {
+  //   // let comment;
+  //   console.log(data);
+  //   setNewComment(data.comment);
+  //   // const commentcount = data.console.log(commentcount);
+  //   fetch(`http://localhost:5000/allposts/${_id}`, {
+  //     method: "PUT",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify({ comment: [...[data.comment]] }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       // console.log(data);
+  //       if (data.modifiedCount > 0) {
+  //         newComment = data.comment;
+  //         // console.log(count);
+  //       }
+  //     });
+  // };
+  if (loading) {
+    return <progress className="progress w-56"></progress>;
+  }
 
   return (
     <div className="grid grid-cols-1">
@@ -72,22 +100,25 @@ const EachPost = ({ allpost }) => {
             <img className="w-8 h-8 hover:bg-red-200" src={love} alt="" />
           </button>
           <p>{totalCount + count}</p>
-          {/* <p>{totalCount}</p> */}
+          <p>{comment}</p>
         </div>
-        {/* new */}
         <div className="flex justify-between item mr-5">
+          {/* Comment Section */}
           <div>
-            <input
-              className="textarea textarea-bordered  rounded-2xl p-3 mt-3 mr-5"
-              placeholder="Add Comment"
-              {...register("post", { required: "Text is required" })}
-            />
-            <button className="btn btn-accent mt">Comment</button>
+            <form onSubmit={handleSubmit()}>
+              <input
+                className="textarea textarea-bordered  rounded-2xl p-3 mt-3 mr-5"
+                placeholder="Add Comment"
+                {...register("comment", { required: "Text is required" })}
+              />
+              <button className="btn btn-accent mt">Comment</button>
+            </form>
           </div>
+
+          {/* detail Button  */}
           <div>
-            {/* <button className="btn btn-accent mt-5">Details</button> */}
             {user?.uid ? (
-              <Link to="/postdetail">
+              <Link to={`/postdetail/${_id}`}>
                 <button className="btn btn-accent mt-5">Details</button>
               </Link>
             ) : (

@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
+import login from "../../assets/login.jpg";
 
 const SignUp = () => {
   const {
@@ -39,18 +40,16 @@ const SignUp = () => {
       });
   };
   return (
-    <div className="w-full">
+    <div className="">
       <div className="hero my-16 grid grid-cols-1">
         <div className="hero-content grid  md:grid-cols-2 flex-col lg:flex-row sm:place-items-center">
           <div className="text-center lg:text-left">
-            <img
-              className=""
-              src="https://media.istockphoto.com/id/170093859/photo/young-girl-and-social-networks.jpg?b=1&s=170667a&w=0&k=20&c=om7FduowD9ZuqfJ5CPCW27Bv8QCQqXx4ZO42wd2I4_8="
-              alt=""
-            />
+            <img className="lg:pt-16 lg:h-[600px]" src={login} alt="" />
           </div>
-          <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100 lg:p-12 lg:m-12">
-            <h1 className="text-5xl font-bold text-center">Sign Up</h1>
+          <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100 p-12 lg:p-12 lg:m-12">
+            <h1 className="text-5xl font-bold text-center italic font-serif text-accent">
+              Sign Up
+            </h1>
             <form onSubmit={handleSubmit(handleSignUp)}>
               <div className="form-control w-full ">
                 <label className="label">
@@ -63,7 +62,7 @@ const SignUp = () => {
                     required: "Name is required",
                   })}
                   placeholder="Name"
-                  className="input input-bordered w-full "
+                  className="input input-bordered input-info w-full "
                 />
                 {errors.name && (
                   <p className="text-red-600">{errors.name?.message}</p>
@@ -80,7 +79,7 @@ const SignUp = () => {
                     required: "ImageURL is required",
                   })}
                   placeholder="Image Url"
-                  className="input input-bordered w-full "
+                  className="input input-bordered input-info w-full "
                 />
                 {errors.imageUrl && (
                   <p className="text-red-600">{errors.imageUrl?.message}</p>
@@ -97,7 +96,7 @@ const SignUp = () => {
                     required: "Email Address is required",
                   })}
                   placeholder="Email"
-                  className="input input-bordered w-full "
+                  className="input input-bordered input-info w-full "
                 />
                 {errors.email && (
                   <p className="text-red-600">{errors.email?.message}</p>
@@ -118,7 +117,7 @@ const SignUp = () => {
                     },
                   })}
                   placeholder="Password"
-                  className="input input-bordered w-full "
+                  className="input input-bordered input-info w-full "
                 />
                 {errors.password && (
                   <p className="text-red-600">{errors.password?.message}</p>
@@ -130,7 +129,7 @@ const SignUp = () => {
 
               <input
                 type="submit"
-                className="btn btn-black w-full mt-5"
+                className="btn btn-outline btn-info font-bold text-xl w-full mt-5"
                 value="Sign Up"
               />
               <div>

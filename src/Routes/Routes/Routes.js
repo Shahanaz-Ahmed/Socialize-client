@@ -33,8 +33,10 @@ const router = createBrowserRouter([
         element: <SignUp></SignUp>,
       },
       {
-        path: "/postdetail",
+        path: "/postdetail/:id",
         element: <PostDetail></PostDetail>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/allposts/${params.id}`),
       },
     ],
   },

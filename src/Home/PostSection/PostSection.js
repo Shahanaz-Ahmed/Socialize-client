@@ -66,7 +66,7 @@ const PostSection = () => {
   }
 
   return (
-    <div className="mt-6 grid grid-cols-1">
+    <div className="my-6 grid grid-cols-1">
       <form onSubmit={handleSubmit(handleAddPost)} className="">
         <input
           className="textarea textarea-bordered w-full rounded-2xl p-3 mb-5"
@@ -106,13 +106,22 @@ const PostSection = () => {
             type="submit"
           />
         ) : (
-          <Link to="/login">
-            <input
-              className="mb-3 btn glass bg-black hover:bg-sky-400 hover:text-white"
-              value="Submit"
-              type="submit"
-            />
+          <Link>
+            {" "}
+            <p className="text-xl">
+              <span className="italic text-blue-700 font-bold text-2xl">
+                Login
+              </span>{" "}
+              First if you want to Post
+            </p>
           </Link>
+          // <Link to="/login">
+          //   <input
+          //     className="mb-3 btn glass bg-black hover:bg-sky-400 hover:text-white"
+          //     value="Submit"
+          //     type="submit"
+          //   />
+          // </Link>
         )}
       </form>
     </div>

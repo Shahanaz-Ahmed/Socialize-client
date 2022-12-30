@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import love from "../../assets/heart.png";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const PostViewSection = ({ like }) => {
   const {
@@ -9,6 +11,7 @@ const PostViewSection = ({ like }) => {
     // formState: { errors },
   } = useForm();
 
+  const { user } = useContext(AuthContext);
   const { _id, totalCount, userPhoto, name, text, image } = like;
   console.log(like);
   // const { totalCount } = like;
@@ -92,6 +95,18 @@ const PostViewSection = ({ like }) => {
                 {...register("post", { required: "Text is required" })}
               />
               <button className="btn btn-accent mt">Comment</button>
+            </div>
+            {/* detail Button  */}
+            <div>
+              {user?.uid ? (
+                <Link to={`/postdetail/${_id}`}>
+                  <button className="btn btn-accent mt-5">Details</button>
+                </Link>
+              ) : (
+                <Link to="/login">
+                  <button className="btn btn-accent mt-5">Details</button>
+                </Link>
+              )}
             </div>
           </div>
         </div>
