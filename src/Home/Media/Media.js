@@ -7,7 +7,9 @@ const Media = () => {
   const { data: allposts = [] } = useQuery({
     queryKey: ["allposts"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/allposts");
+      const res = await fetch(
+        " https://social-media-task-server-eight.vercel.app/allposts"
+      );
       const data = await res.json();
       return data;
     },
@@ -20,7 +22,7 @@ const Media = () => {
 
   return (
     <div className="grid sm:grid-cols-1">
-      <h2 className="text-center text-2xl font-serif italic font-bold">
+      <h2 className="text-center text-3xl font-serif italic font-bold text-accent my-5">
         Media: {allposts?.length}
       </h2>
       <div className="">

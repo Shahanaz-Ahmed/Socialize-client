@@ -21,7 +21,7 @@ const PostViewSection = ({ like }) => {
   //   queryKey: ["likeCount"],
   //   queryFn: async () => {
   //     const res = await fetch(
-  //       `http://localhost:5000/home/allposts?totalCount=${totalCount}`
+  //       ` https://social-media-task-server-eight.vercel.app/home/allposts?totalCount=${totalCount}`
   //     );
   //     const data = await res.json();
   //     console.log(data);
@@ -32,7 +32,7 @@ const PostViewSection = ({ like }) => {
   // const { data: homePost } = useQuery({
   //   queryKey: ["allposts"],
   //   queryFn: async () => {
-  //     const res = await fetch("http://localhost:5000/home/allposts");
+  //     const res = await fetch(" https://social-media-task-server-eight.vercel.app/home/allposts");
   //     const data = await res.json();
   //     console.log(data);
   //     return data;
@@ -48,13 +48,16 @@ const PostViewSection = ({ like }) => {
     console.log(count);
     console.log(_id);
     //
-    fetch(`http://localhost:5000/allposts/${_id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ count: count + totalCount }),
-    })
+    fetch(
+      ` https://social-media-task-server-eight.vercel.app/allposts/${_id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ count: count + totalCount }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

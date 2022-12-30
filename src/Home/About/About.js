@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import Footer from "../../Shared/Footer/Footer";
+import about1 from "../../assets/about.jpeg";
 
 const About = () => {
   const {
@@ -38,7 +39,9 @@ const About = () => {
   } = useQuery({
     queryKey: ["about"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/about");
+      const res = await fetch(
+        " https://social-media-task-server-eight.vercel.app/about"
+      );
       const data = await res.json();
       return data;
     },
@@ -56,7 +59,7 @@ const About = () => {
   const handleAbout = (data, name, email, university, address) => {
     console.log(data);
     console.log(data.name);
-    fetch(`http://localhost:5000/about/${id}`, {
+    fetch(` https://social-media-task-server-eight.vercel.app/about/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -125,16 +128,42 @@ const About = () => {
       </div>
       <div>
         <img
-          src="https://images.unsplash.com/photo-1554177255-61502b352de3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+          src={
+            "https://images.unsplash.com/photo-1554177255-61502b352de3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+          }
           alt=""
-          className="lg:w-full h-[300px]"
+          className="w-full h-[300px] grid lg:grid-cols-1 md:grid-cols-1  sm:grid-cols-1"
         />
       </div>
-      <h2 className="font-bold text-2xl font-serif italic">About</h2>
-      <h2>Name: {name}</h2>
-      <h2>Email: {email}</h2>
-      <h2>University: {university}</h2>
-      <h2>Address: {address}</h2>
+      {/* About Main */}
+      <div className="hero">
+        <div className="hero-content flex-col lg:flex-row">
+          <img src={about1} className="lg:w-1/2 rounded-lg shadow-2xl" alt="" />
+          <div className="lg:w-1/2 text-2xl">
+            <h2 className="font-bold text-2xl font-serif italic text-center">
+              About
+            </h2>
+            <div className="sm:text-left lg:ml-5 :text-center">
+              {" "}
+              <h2>
+                <span className="font-semibold">Name:</span> {name}
+              </h2>
+              <h2>
+                <span className="font-semibold">Email:</span> {email}
+              </h2>
+              <h2>
+                {" "}
+                <span className="font-semibold">University:</span> {university}
+              </h2>
+              <h2>
+                {" "}
+                <span className="font-semibold">Address:</span> {address}
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* <EditModal></EditModal> */}
       {/* Modal */}
       <div>
@@ -148,7 +177,9 @@ const About = () => {
               >
                 ✕
               </label>
-              <h3 className="text-lg font-bold mb-3">Update About</h3>
+              <h3 className="text-2xl font-serif italic text-accent font-bold mb-3">
+                Update About
+              </h3>
               <form onSubmit={handleSubmit(handleAbout)}>
                 <input
                   type="name"
@@ -156,7 +187,7 @@ const About = () => {
                     required: "Name is required",
                   })}
                   placeholder="Name"
-                  className="input input-bordered w-full mb-3"
+                  className="input input-bordered input-info w-full mb-3"
                 />
                 {errors.name && (
                   <p className="text-red-600">{errors.name?.message}</p>
@@ -167,7 +198,7 @@ const About = () => {
                     required: "Email is required",
                   })}
                   placeholder="Email"
-                  className="input input-bordered w-full mb-3"
+                  className="input input-bordered input-info w-full mb-3"
                 />
                 {errors.email && (
                   <p className="text-red-600">{errors.email?.message}</p>
@@ -178,7 +209,7 @@ const About = () => {
                     required: "University Name is required",
                   })}
                   placeholder="University Name"
-                  className="input input-bordered w-full mb-3"
+                  className="input input-bordered input-info w-full mb-3"
                 />
                 {errors.university && (
                   <p className="text-red-600">{errors.university?.message}</p>
@@ -189,14 +220,14 @@ const About = () => {
                     required: "Address is required",
                   })}
                   placeholder="Address"
-                  className="input input-bordered w-full mb-3"
+                  className="input input-bordered input-info w-full mb-3"
                 />
                 {errors.address && (
                   <p className="text-red-600">{errors.address?.message}</p>
                 )}
                 <br />
                 <input
-                  className="w-full btn btn-black"
+                  className="w-full btn btn-info text-xl font-bold"
                   type="submit"
                   value="Save"
                   htmlFor="booking-modal"

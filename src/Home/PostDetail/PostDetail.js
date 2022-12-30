@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import love from "../../assets/heart.png";
@@ -19,13 +18,16 @@ const PostDetail = () => {
     // console.log(count);
     // console.log(_id);
     //
-    fetch(`http://localhost:5000/allposts/${_id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ count: count + totalCount }),
-    })
+    fetch(
+      ` https://social-media-task-server-eight.vercel.app/allposts/${_id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ count: count + totalCount }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

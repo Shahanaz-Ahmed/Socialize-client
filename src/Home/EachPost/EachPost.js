@@ -27,13 +27,16 @@ const EachPost = ({ allpost }) => {
     // console.log(count);
     // console.log(_id);
     //
-    fetch(`http://localhost:5000/allposts/${_id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ count: count + totalCount }),
-    })
+    fetch(
+      ` https://social-media-task-server-eight.vercel.app/allposts/${_id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ count: count + totalCount }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -48,7 +51,7 @@ const EachPost = ({ allpost }) => {
   // const { data: allposts = [] } = useQuery({
   //   queryKey: ["allposts"],
   //   queryFn: async () => {
-  //     const res = await fetch("http://localhost:5000/allposts");
+  //     const res = await fetch(" https://social-media-task-server-eight.vercel.app/allposts");
   //     const data = await res.json();
   //     return data;
   //   },
@@ -62,7 +65,7 @@ const EachPost = ({ allpost }) => {
   //   console.log(data);
   //   setNewComment(data.comment);
   //   // const commentcount = data.console.log(commentcount);
-  //   fetch(`http://localhost:5000/allposts/${_id}`, {
+  //   fetch(` https://social-media-task-server-eight.vercel.app/allposts/${_id}`, {
   //     method: "PUT",
   //     headers: {
   //       "content-type": "application/json",
@@ -91,7 +94,8 @@ const EachPost = ({ allpost }) => {
               <img src={userPhoto} alt="" />
             </div>
           </div>
-          <p>{name}</p>
+          <p className="text-xl">{name}</p>
+          <hr />
         </div>
         <p className="pb-5 italic text-xl">{text}</p>
         <img className="w-full pr-5 h-[350px]" src={image} alt="" />

@@ -44,7 +44,7 @@ const PostSection = () => {
             userPhoto: user.photoURL,
           };
           //save all the post to the database
-          fetch("http://localhost:5000/allposts", {
+          fetch(" https://social-media-task-server-eight.vercel.app/allposts", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -76,7 +76,7 @@ const PostSection = () => {
         {errors.post && <p className="text-red-500">{errors.post.message}</p>}
         <br />
 
-        <div className="my-3 flex m">
+        <div className="my-3 flex items-center justify-center">
           {" "}
           <label htmlFor="files" className="">
             <img className="w-8 h-8 mr-2" src={icon1} alt="" />
@@ -91,7 +91,7 @@ const PostSection = () => {
             }}
             // style={{ color: "bg-black" }}
             type="file"
-            className=""
+            className="file-input file-input-bordered file-input-accent"
             {...register("image", { required: "file is required" })}
           />
           {errors.image && (
@@ -100,28 +100,25 @@ const PostSection = () => {
         </div>
         <hr className="bg-black h-1 mb-2" />
         {user?.uid ? (
-          <input
-            className="mb-3 btn glass bg-black hover:bg-sky-400 hover:text-white"
-            value="Submit"
-            type="submit"
-          />
+          <div className="flex justify-center">
+            <input
+              className="mb-3 btn glass bg-accent hover:bg-sky-400 hover:text-white "
+              value="Submit"
+              type="submit"
+            />
+          </div>
         ) : (
-          <Link>
-            {" "}
-            <p className="text-xl">
-              <span className="italic text-blue-700 font-bold text-2xl">
-                Login
-              </span>{" "}
-              First if you want to Post
-            </p>
-          </Link>
-          // <Link to="/login">
-          //   <input
-          //     className="mb-3 btn glass bg-black hover:bg-sky-400 hover:text-white"
-          //     value="Submit"
-          //     type="submit"
-          //   />
-          // </Link>
+          <div className="flex justify-center">
+            <Link>
+              {" "}
+              <p className="text-xl">
+                <span className="italic text-blue-700 font-bold text-2xl">
+                  Login
+                </span>{" "}
+                First if you want to Post
+              </p>
+            </Link>
+          </div>
         )}
       </form>
     </div>

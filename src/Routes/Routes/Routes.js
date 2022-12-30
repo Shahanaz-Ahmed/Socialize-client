@@ -36,7 +36,9 @@ const router = createBrowserRouter([
         path: "/postdetail/:id",
         element: <PostDetail></PostDetail>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allposts/${params.id}`),
+          fetch(
+            ` https://social-media-task-server-eight.vercel.app/allposts/${params.id}`
+          ),
       },
     ],
   },
