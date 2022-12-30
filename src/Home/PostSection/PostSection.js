@@ -109,7 +109,7 @@ const PostSection = () => {
           </div>
         ) : (
           <div className="flex justify-center">
-            <Link>
+            <Link to="/login">
               {" "}
               <p className="text-xl">
                 <span className="italic text-blue-700 font-bold text-2xl">
