@@ -5,6 +5,7 @@ import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import Footer from "../../Shared/Footer/Footer";
 import about1 from "../../assets/about.jpeg";
+import header from "../../assets/header.jpeg";
 
 const About = () => {
   const {
@@ -128,9 +129,7 @@ const About = () => {
       </div>
       <div>
         <img
-          src={
-            "https://images.unsplash.com/photo-1554177255-61502b352de3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-          }
+          src={header}
           alt=""
           className="w-full h-[300px] grid lg:grid-cols-1 md:grid-cols-1  sm:grid-cols-1"
         />
