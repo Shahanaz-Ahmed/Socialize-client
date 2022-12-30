@@ -115,7 +115,7 @@ const EachPost = ({ allpost }) => {
                 placeholder="Add Comment"
                 {...register("comment", { required: "Text is required" })}
               />
-              <button className="btn btn-accent mt">Comment</button>
+              <button className="btn btn-accent sm:pt-5">Comment</button>
             </form>
           </div>
 

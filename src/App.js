@@ -6,7 +6,7 @@ import { Toaster } from "react-hot-toast";
 function App() {
   return (
     <div
-      className="w-[1000px] mx-auto "
+      className="lg:w-[1000px] mx-auto "
       style={{ backgroundColor: "aliceblue" }}
     >
       <RouterProvider router={router}></RouterProvider>

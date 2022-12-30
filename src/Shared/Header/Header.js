@@ -62,6 +62,11 @@ const Header = () => {
               {menuItems}
             </ul>
           </div>
+          <img
+            src="https://cdn.iconscout.com/icon/premium/png-256-thumb/socialize-2590569-2161732.png"
+            alt=""
+            className="h-12 w-16"
+          />
           <Link
             to="/"
             className="btn btn-ghost normal-case text-2xl italic font-serif"
